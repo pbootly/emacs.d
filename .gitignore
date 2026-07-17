@@ -1,0 +1,14 @@
+elpa/
+eln-cache/
+
+*.elc
+
+auto-save-list/
+tree-sitter/
+transient/
+url/
+.cache/
+
+mason/
+
+projects
