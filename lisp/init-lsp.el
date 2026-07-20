@@ -18,17 +18,14 @@
       (message "Installing tree-sitter grammar: %s" lang)
       (treesit-install-language-grammar lang))))
 
-;; Associate file extensions directly with tree-sitter modes.
-;; (auto-mode-alist decides which mode a filename opens in;
-;;  major-mode-remap-alist below only re-routes an *already chosen*
-;;  legacy mode, so we need this to actually get into *-ts-mode.)
-(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.c\\'" . c-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.sh\\'" . bash-ts-mode))
+(dolist (mapping '(("\\.go\\'" . go-ts-mode)
+		   ("\\.rs\\'" . rust-ts-mode)
+		   ("\\.py\\'" . python-ts-mode)
+		   ("\\.c\\'" . c-ts-mode)
+		   ("\\.cpp\\'" . c++-ts-mode)
+		   ("\\.h\\'" . c-ts-mode)
+		   ("\\.sh\\'" . bash-ts-mode)))
+  (add-to-list 'auto-mode-alist mapping))
 
 ;; Prefer tree-sitter modes over legacy equivalents
 (dolist (mapping '((go-mode     . go-ts-mode)
