@@ -8,4 +8,9 @@
   :height 140   ; points × 10, so 140 = 14pt
   :weight 'normal)
 
+;; A very important Emacs package
+(use-package nyan-mode
+  :functions nyan-mode
+  :config (nyan-mode))
+
 (provide 'init-theme)
