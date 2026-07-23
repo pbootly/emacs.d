@@ -36,6 +36,11 @@
                     (sh-mode     . bash-ts-mode)))
   (add-to-list 'major-mode-remap-alist mapping))
 
+(defun my/eglot-buffer-line-numbers ()
+  "Turn on relative line numbers in eglot-managed buffers."
+  (setq-local display-line-numbers-type 'relative)
+  (display-line-numbers-mode 1))
+
 (use-package eglot
   :ensure nil
   :hook ((go-ts-mode
@@ -43,8 +48,15 @@
           python-ts-mode
           c-ts-mode c++-ts-mode
           bash-ts-mode) . eglot-ensure)
+  :hook ((go-ts-mode
+          rust-ts-mode
+          python-ts-mode
+          c-ts-mode c++-ts-mode
+          bash-ts-mode) . my/eglot-buffer-line-numbers)
   :config
   (add-to-list 'eglot-server-programs
                '((c-ts-mode c++-ts-mode) . ("clangd"))))
 
 (provide 'init-lsp)
+
+
