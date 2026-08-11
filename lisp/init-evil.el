@@ -6,7 +6,9 @@
   :config
   (evil-set-leader nil (kbd "SPC"))
   (evil-define-key 'normal 'global (kbd "<leader>ff") 'project-find-file)
-  (evil-define-key 'normal 'global (kbd "<leader><leader>") 'list-buffers)
+  (evil-define-key 'normal 'global (kbd "<leader>fg") 'consult-ripgrep)
+  (evil-define-key 'normal 'global (kbd "<leader><leader>") 'consult-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>fh") 'consult-history)
   (evil-mode 1))
 
 (use-package evil-collection
