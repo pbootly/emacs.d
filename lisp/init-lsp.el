@@ -14,6 +14,7 @@
         (cpp        . ("https://github.com/tree-sitter/tree-sitter-cpp"))
         (bash       . ("https://github.com/tree-sitter/tree-sitter-bash"))
         (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
+        (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))
         (tsx        . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
         (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))))
 
@@ -34,6 +35,7 @@
                    ("\\.tsx\\'" . tsx-ts-mode)
                    ("\\.jsx?\\'" . js-ts-mode)
                    ("\\.mjs\\'" . js-ts-mode)
+                   ("\\.yaml\\'" . yaml-ts-mode)
                    ("\\.cjs\\'" . js-ts-mode)))
   (add-to-list 'auto-mode-alist mapping))
 
@@ -46,6 +48,7 @@
                     (sh-mode         . bash-ts-mode)
                     (typescript-mode . typescript-ts-mode)
                     (js-mode         . js-ts-mode)
+                    (yaml-mode         . yaml-ts-mode)
                     (js2-mode        . js-ts-mode)))
   (add-to-list 'major-mode-remap-alist mapping))
 
