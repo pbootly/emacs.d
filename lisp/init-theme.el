@@ -1,8 +1,11 @@
 (use-package kanagawa-themes
   :config
-  (load-theme 'kanagawa-wave t))
+  (let ((warning-minimum-level :error))
+    (load-theme 'kanagawa-wave t))
+  (set-face-attribute 'font-lock-variable-name-face nil :foreground 'unspecified)
+  (set-face-attribute 'corfu-current nil :foreground 'unspecified)
+  (set-face-attribute 'corfu-bar nil :background 'unspecified))
 
-;; Font
 (set-face-attribute 'default nil
   :family "ComicShanns Nerd Font"
   :height 140   ; points × 10, so 140 = 14pt
