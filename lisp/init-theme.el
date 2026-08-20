@@ -8,7 +8,7 @@
 
 (set-face-attribute 'default nil
   :family "ComicShanns Nerd Font"
-  :height 140   ; points × 10, so 140 = 14pt
+  :height 160   ; points × 10, so 140 = 14pt
   :weight 'normal)
 
 (provide 'init-theme)

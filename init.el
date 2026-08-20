@@ -10,6 +10,7 @@
 (require 'init-devcontainer)
 (require 'init-markdown)
 (require 'init-corfu)
+(require 'init-projectile)
 (require 'init-evil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
