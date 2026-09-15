@@ -16,6 +16,7 @@
         (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
         (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))
         (tsx        . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
+	(hcl . ("https://github.com/tree-sitter-grammars/tree-sitter-hcl"))
         (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))))
 
 (dolist (grammar treesit-language-source-alist)
@@ -23,6 +24,8 @@
     (unless (treesit-language-available-p lang)
       (message "Installing tree-sitter grammar: %s" lang)
       (treesit-install-language-grammar lang))))
+
+(use-package terraform-mode)
 
 (dolist (mapping '(("\\.go\\'" . go-ts-mode)
                    ("\\.rs\\'" . rust-ts-mode)
@@ -36,20 +39,22 @@
                    ("\\.jsx?\\'" . js-ts-mode)
                    ("\\.mjs\\'" . js-ts-mode)
                    ("\\.yaml\\'" . yaml-ts-mode)
+		   ("\\.tf\\'" . hcl-ts-mode)
                    ("\\.cjs\\'" . js-ts-mode)))
   (add-to-list 'auto-mode-alist mapping))
 
 ;; Prefer tree-sitter modes over legacy equivalents
 (dolist (mapping '((go-mode         . go-ts-mode)
-                    (rust-mode       . rust-ts-mode)
-                    (python-mode     . python-ts-mode)
-                    (c-mode          . c-ts-mode)
-                    (c++-mode        . c++-ts-mode)
-                    (sh-mode         . bash-ts-mode)
-                    (typescript-mode . typescript-ts-mode)
-                    (js-mode         . js-ts-mode)
-                    (yaml-mode         . yaml-ts-mode)
-                    (js2-mode        . js-ts-mode)))
+		   (rust-mode       . rust-ts-mode)
+		   (python-mode     . python-ts-mode)
+		   (c-mode          . c-ts-mode)
+		   (c++-mode        . c++-ts-mode)
+		   (sh-mode         . bash-ts-mode)
+		   (typescript-mode . typescript-ts-mode)
+		   (js-mode         . js-ts-mode)
+		   (yaml-mode         . yaml-ts-mode)
+		   (hcl-mode . hcl-ts-mode)
+		   (js2-mode        . js-ts-mode)))
   (add-to-list 'major-mode-remap-alist mapping))
 
 ;; Bun / Node project roots for eglot + project.el
@@ -72,6 +77,7 @@
           bash-ts-mode
           typescript-ts-mode
           tsx-ts-mode
+	  hcl-ts-mode
           js-ts-mode) . eglot-ensure)
   :hook ((go-ts-mode
           rust-ts-mode
@@ -80,6 +86,7 @@
           bash-ts-mode
           typescript-ts-mode
           tsx-ts-mode
+	  hcl-ts-mode
           js-ts-mode) . my/eglot-buffer-line-numbers)
   :config
   (add-to-list 'eglot-server-programs
