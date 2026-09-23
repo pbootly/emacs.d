@@ -12,6 +12,7 @@
 (require 'init-corfu)
 (require 'init-projectile)
 (require 'init-evil)
+(require 'init-ellama)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

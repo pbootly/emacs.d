@@ -25,10 +25,7 @@
       (message "Installing tree-sitter grammar: %s" lang)
       (treesit-install-language-grammar lang))))
 
-;; Terraform mode supplies HCL highlighting; Eglot supplies language features.
-(use-package terraform-mode
-  :mode (("\\.tf\\'" . terraform-mode)
-         ("\\.tfvars\\'" . terraform-mode)))
+(use-package terraform-mode)
 
 (dolist (mapping '(("\\.go\\'" . go-ts-mode)
                    ("\\.rs\\'" . rust-ts-mode)
@@ -42,6 +39,7 @@
                    ("\\.jsx?\\'" . js-ts-mode)
                    ("\\.mjs\\'" . js-ts-mode)
                    ("\\.yaml\\'" . yaml-ts-mode)
+		   ("\\.tf\\'" . hcl-ts-mode)
                    ("\\.cjs\\'" . js-ts-mode)))
   (add-to-list 'auto-mode-alist mapping))
 
@@ -55,6 +53,7 @@
 		   (typescript-mode . typescript-ts-mode)
 		   (js-mode         . js-ts-mode)
 		   (yaml-mode         . yaml-ts-mode)
+		   (hcl-mode . hcl-ts-mode)
 		   (js2-mode        . js-ts-mode)))
   (add-to-list 'major-mode-remap-alist mapping))
 
@@ -78,7 +77,7 @@
           bash-ts-mode
           typescript-ts-mode
           tsx-ts-mode
-	  terraform-mode
+	  hcl-ts-mode
           js-ts-mode) . eglot-ensure)
   :hook ((go-ts-mode
           rust-ts-mode
@@ -87,11 +86,9 @@
           bash-ts-mode
           typescript-ts-mode
           tsx-ts-mode
-	  terraform-mode
+	  hcl-ts-mode
           js-ts-mode) . my/eglot-buffer-line-numbers)
   :config
-  (add-to-list 'eglot-server-programs
-               '(terraform-mode . ("terraform-ls" "serve")))
   (add-to-list 'eglot-server-programs
                '((c-ts-mode c++-ts-mode) . ("clangd")))
   ;; Eglot already maps TS/JS modes to typescript-language-server by default.
