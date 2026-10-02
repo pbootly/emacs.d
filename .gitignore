@@ -1,18 +1,74 @@
-elpa/
-eln-cache/
+# Local settings and credentials
+/custom.el
+/local.el
+/*.local.el
+/private.el
+/secrets.el
+/local/
+/private/
+/secrets/
+.env
+.env.*
+.envrc
+.direnv/
+.authinfo*
+authinfo*
+.netrc
+*.key
+*.pem
+*.p12
+*.pfx
+*.gpg
+*.age
 
+# Doom/Emacs packages, caches, and generated files
+/.local/
+/.cache/
+/straight/
+/elpa/
+/eln-cache/
+/tree-sitter/
+/mason/
 *.elc
+*.eln
+/autoloads.el
+/autoloads.*.el
 
-auto-save-list/
-tree-sitter/
-transient/
-url/
-.cache/
+# Sessions, history, and other runtime state
+/auto-save-list/
+/backups/
+/undo-tree-hist/
+/transient/
+/url/
+/request/
+/server/
+/eshell/
+/tramp
+/recentf
+/savehist
+/history
+/saveplace
+/places
+/bookmarks
+/projects
+/projectile-bookmarks.eld
+/projectile.cache
+/.lsp-session-v1
+/org-persist/
+/org-roam.db*
 
-mason/
+# Editor backups, autosaves, and lock files
+*~
+\#*\#
+.#*
+*.bak
+*.backup
+*.before-*
+*.orig
+*.rej
+*.swp
+*.swo
 
-projects
-
-request/
-
-projectile*
+# macOS metadata
+.DS_Store
+._*
